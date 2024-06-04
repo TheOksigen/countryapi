@@ -1,5 +1,6 @@
 const express = require('express')
 const app = express()
+const cors = require('cors')
 
 const data = [
     {
@@ -47575,7 +47576,7 @@ const data = [
             "format": "### ##",
             "regex": "^(\\d{5})$"
         }
-    },   
+    },
     {
         "name": {
             "common": "Venezuela",
@@ -52830,14 +52831,16 @@ const data = [
     }
 ]
 
+app.use(cors())
+
 app.get('/country', (req, res) => {
     res.json(data)
 })
 
-app.get("/country/:id", (req, res)=> {    
-    const filterData = data.filter((item)=> item.fifa == req.params.id)
+app.get("/country/:id", (req, res) => {
+    const filterData = data.filter((item) => item.fifa == req.params.id)
     res.json(filterData)
-    
+
 })
 
 app.listen(3000, () => console.log("server is rungun"))
