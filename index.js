@@ -52838,7 +52838,7 @@ app.get('/country', (req, res) => {
 })
 
 app.get("/country/:id", (req, res) => {
-    const filterData = data.filter((item) => item.fifa == req.params.id)
+    const filterData = data.filter((item) => item.cca3 == req.params.id)
     res.json(filterData)
 
 })
